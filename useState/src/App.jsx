@@ -1,21 +1,22 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState } from 'react'
+import { use } from 'react'
 
 const App = () => {
 
-  
+  const [num, setnum] = useState(0)
 
-const [a, seta] = useState(10);
-let change=()=>{
-  seta(30);
-  console.log(a);
-}
-
+  function increase() {
+    setnum(num + 1)
+  }
+  function decrease() {
+    setnum(num - 1)
+  } 
   return (
     <div>
-      <h1>hi value of a is {a}</h1>
-      <button onClick={change}>click me</button>
-      
+      <h1>{num}</h1>
+      <button onClick={increase}>increase</button>
+      <button onClick={decrease}>decrease</button>
     </div>
   )
 }

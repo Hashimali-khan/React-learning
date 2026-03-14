@@ -1,0 +1,166 @@
+/* ===== Root Setup ===== */
+body {
+  background: #f4f6f8;
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 40px;
+}
+
+/* ===== Grid Layout (Multiple Cards) ===== */
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+
+}
+
+/* ===== Card ===== */
+.card {
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 24px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width:250px;
+  height: 300px;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== Top Section ===== */
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 3px solid #e5e7eb;
+}
+
+.top button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 8px 14px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+
+  background: #f9fafb;
+  color: #374151;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+
+.top button:hover {
+  background: #111827;
+  color: #ffffff;
+  border-color: #111827;
+  transform: translateY(-1px);
+}
+
+.top button.saved:hover {
+  opacity: 0.85;
+}
+
+.top button.saved {
+  background: #111827;
+  color: #ffffff;
+  border-color: #111827;
+}
+
+
+/* ===== Center Section ===== */
+.center {
+  margin-top: 22px;
+}
+
+.center h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+  color: #111827;
+}
+
+.center h3 span {
+  font-size: 13px;
+  font-weight: 400;
+  color: #9ca3af;
+  margin-left: 6px;
+}
+
+.center h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 12px 0;
+  color: #1f2937;
+}
+
+.tag {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: #f3f4f6;
+  color: #374151;
+  letter-spacing: 0.2px;
+  transition: all 0.2s ease;
+}
+.tag:hover {
+  background: #e5e7eb;
+}
+
+/* ===== Bottom Section ===== */
+.bottom {
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bottom h3 {
+  font-size: 16px;
+  margin: 0;
+  font-weight: 700;
+  color: #111827;
+}
+
+.bottom p {
+  font-size: 13px;
+  color: #9ca3af;
+  margin: 2px 0 0 0;
+}
+
+.bottom button {
+  background: #111827;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.bottom button:hover {
+  background: #1f2937;
+}
+.bottom button:active {
+  background: #374151;
+}

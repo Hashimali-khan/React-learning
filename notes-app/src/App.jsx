@@ -15,6 +15,11 @@ const App = () => {
     setTitle("")
     setDetails("")
   }
+  const deleteNote = (index) => {
+    const copyNote = [...notes]
+    copyNote.splice(index, 1)
+    setNotes(copyNote)
+  }
 
 
 
@@ -59,7 +64,7 @@ const App = () => {
         </div>
 
         <div>
-          <h1 className='text-2xl font-bold p-4 mb-4'>Your Notes</h1>
+          <h1 className='text-2xl font-bold p-4 mb-4'>Recent  Notes</h1>
           <div
             className="grid gap-6"
             style={{ gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))" }}
@@ -72,7 +77,7 @@ const App = () => {
               >
                 <div>
                   <h3 className="text-black text-lg font-bold leading-tight">{note.title}</h3>
-                  <p className="mt-2 leading-tight text-xs font-semibold text-gray-600 line-clamp-4 break-words">
+                  <p className="mt-2 leading-tight text-s font-semibold text-gray-600 line-clamp-4 break-words">
                     {note.details}
                   </p>
                 </div>

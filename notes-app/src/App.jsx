@@ -19,46 +19,71 @@ const App = () => {
 
 
   return (
-    <div className='bg-black text-white w-full min-h-screen p-4'>
-       <h1 className='text-2xl font-bold p-4 mb-4'>Add Note</h1>
-      <div className='w-full  '>
+    <div className="min-h-screen bg-black text-white">
+      <div className="mx-auto max-w-6xl px-4 py-10">
+        <h1 className="text-3xl md:text-4xl font-bold mb-6">Add Note</h1>
+        <div className='w-full  '>
 
-        <form className="flex flex-col p-10 gap-4 w-full max-w-xl mx-auto mt-10" onSubmit={submitHandler}>
+          <form
+            className="mx-auto w-full max-w-xl rounded-2xl border border-white/10 bg-white/5 p-8 shadow-lg backdrop-blur-sm"
+            onSubmit={submitHandler}
+          >
+            <label className="block">
+              <span className="text-sm font-medium text-white/80">Title</span>
+              <input
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="Enter title"
+                className="mt-2 w-full rounded-lg border border-white/30 bg-black/40 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </label>
 
-            <input className=' text-white border border-white/40 p-4 gap-4 font-medium ' type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder='Enter title'
-             />
+            <label className="block">
+              <span className="text-sm font-medium text-white/80">Details</span>
+              <textarea
+                value={details}
+                onChange={(e) => setDetails(e.target.value)}
+                placeholder="Write details"
+                className="mt-2 h-32 w-full resize-none rounded-lg border border-white/30 bg-black/40 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </label>
 
-            <textarea className=' text-white border border-white/40 p-4 h-32 gap-4 font-medium' type="text" value={details} onChange={(e) => setDetails(e.target.value)} placeholder="write details"></textarea>
+            <button
+              type="submit"
+              className="mt-4 w-full rounded-lg bg-white px-4 py-3 text-black font-bold shadow-sm transition hover:bg-gray-200 active:scale-[0.98]"
+            >
+              Add Note
+            </button>
+          </form> 
 
-            <input className='bg-white text-black hover:bg-gray-200 active:bg-gray-300 font-bold py-2 px-4 border border-blue-700 rounded ' type="submit" value="Add Note" />
+        </div>
 
-        </form> 
-
-      </div>
-
-      <div>
-        <h1 className='text-2xl font-bold p-4 mb-4'>Your Notes</h1>
-        <div className="w-full grid gap-4 px-4" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
-
-          {notes.map((note, index) => (
-            
-             <div
-  key={index}
-  className="flex flex-col justify-between items-start relative w-full max-w-sm min-h-[220px] bg-cover rounded-xl text-black pt-9 pb-4 px-4"
-  style={{ backgroundImage: "url('https://static.vecteezy.com/system/resources/previews/037/152/677/non_2x/sticky-note-paper-background-free-png.png')" }}
->
-              <div>
-                <h3 className='p-4leading-tight text-lg font-bold'>{note.title}</h3>
-                <p className="p-4 mt-2 leading-tight text-xs font-semibold text-gray-600 line-clamp-4 break-words">
-                  {note.details}
-                </p>
+        <div>
+          <h1 className='text-2xl font-bold p-4 mb-4'>Your Notes</h1>
+          <div
+            className="grid gap-6"
+            style={{ gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))" }}
+          >
+            {notes.map((note, index) => (
+              <div
+                key={index}
+                className="flex flex-col justify-between items-start relative w-full max-w-sm min-h-[220px] rounded-xl bg-cover bg-center px-4 py-6 shadow-lg hover:shadow-xl transition"
+                style={{ backgroundImage: "url('https://static.vecteezy.com/system/resources/previews/037/152/677/non_2x/sticky-note-paper-background-free-png.png')" }}
+              >
+                <div>
+                  <h3 className="text-black text-lg font-bold leading-tight">{note.title}</h3>
+                  <p className="mt-2 leading-tight text-xs font-semibold text-gray-600 line-clamp-4 break-words">
+                    {note.details}
+                  </p>
+                </div>
+                <button
+                  onClick={() => {
+                    deleteNote(index)
+                  }}
+                  className='w-full cursor-pointer active:scale-95 bg-red-500 py-1 text-xs rounded font-bold text-white'>Delete</button>
               </div>
-              <button onClick={() => {
-                deleteNote(index)
-              }} className='w-full cursor-pointer active:scale-95 bg-red-500 py-1 text-xs rounded font-bold text-white'>Delete</button>
-          </div>
-          ))}
-
+            ))}
+          </div> 
         </div> 
       </div>
     </div>

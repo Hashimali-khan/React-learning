@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const App = () => {
 
+  const [title, setTitle] = useState("");
+  const [details, setDetails] = useState("");
+
+
   const submitHandler = (e) => {
     e.preventDefault()
-    console.log("form submitted")
-
+    setTitle("")
+    setDetails("")
   }
 
 
@@ -14,16 +18,16 @@ const App = () => {
     <div className='bg-black text-white w-full h-full'>
        <h1 className='text-2xl font-bold p-4 mb-4'>Add Note</h1>
       <div className='w-full  '>
-        <form className="flex flex-col p-10 gap-4 w-full max-w-xl mx-auto mt-10">
 
-            <input className=' text-white border border-white/40 p-4 gap-4 font-medium ' type="text" placeholder='Enter title'
+        <form className="flex flex-col p-10 gap-4 w-full max-w-xl mx-auto mt-10" onSubmit={submitHandler}>
+
+            <input className=' text-white border border-white/40 p-4 gap-4 font-medium ' type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder='Enter title'
              />
 
-            <textarea className=' text-white border border-white/40 p-4 h-32 gap-4 font-medium' type="text" placeholder="write details"></textarea>
+            <textarea className=' text-white border border-white/40 p-4 h-32 gap-4 font-medium' type="text" value={details} onChange={(e) => setDetails(e.target.value)} placeholder="write details"></textarea>
 
-            <button onClick={(e)=>{
-              submitHandler(e)
-            }} className='bg-white text-black hover:bg-gray-200 active:bg-gray-300 font-bold py-2 px-4 border border-blue-700 rounded '>Add Note</button>
+            <input className='bg-white text-black hover:bg-gray-200 active:bg-gray-300 font-bold py-2 px-4 border border-blue-700 rounded ' type="submit" value="Add Note" />
+
         </form> 
 
       </div>
@@ -45,6 +49,7 @@ const App = () => {
             <h2 className='text-xl font-bold'>Note Title</h2>
             <p className='text-white'>Note details go here. This is a sample note.</p>
           </div>
+
         </div> 
       </div>
     </div>

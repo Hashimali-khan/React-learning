@@ -4,10 +4,14 @@ const App = () => {
 
   const [title, setTitle] = useState("");
   const [details, setDetails] = useState("");
+  const [notes, setNotes] = useState([])
 
 
   const submitHandler = (e) => {
     e.preventDefault()
+    const copyNote = [...notes]
+    copyNote.push({ title, details })
+    setNotes(copyNote)  
     setTitle("")
     setDetails("")
   }
@@ -15,7 +19,7 @@ const App = () => {
 
 
   return (
-    <div className='bg-black text-white w-full h-full'>
+    <div className='bg-black text-white w-full min-h-screen p-4'>
        <h1 className='text-2xl font-bold p-4 mb-4'>Add Note</h1>
       <div className='w-full  '>
 
@@ -34,21 +38,26 @@ const App = () => {
 
       <div>
         <h1 className='text-2xl font-bold p-4 mb-4'>Your Notes</h1>
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4">
-          <div className="flex flex-col p-10 gap-4 border border-white rounded">
-            <h2 className='text-xl font-bold'>Note Title</h2>
-            <p className='text-white'>Note details go here. This is a sample note.</p>
-          </div>
+        <div className="w-full grid gap-4 px-4" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
 
-           <div className="flex flex-col p-10 gap-4 border border-white rounded">
-            <h2 className='text-xl font-bold'>Note Title</h2>
-            <p className='text-white'>Note details go here. This is a sample note.</p>
+          {notes.map((note, index) => (
+            
+             <div
+  key={index}
+  className="flex flex-col justify-between items-start relative w-full max-w-sm min-h-[220px] bg-cover rounded-xl text-black pt-9 pb-4 px-4"
+  style={{ backgroundImage: "url('https://static.vecteezy.com/system/resources/previews/037/152/677/non_2x/sticky-note-paper-background-free-png.png')" }}
+>
+              <div>
+                <h3 className='p-4leading-tight text-lg font-bold'>{note.title}</h3>
+                <p className="p-4 mt-2 leading-tight text-xs font-semibold text-gray-600 line-clamp-4 break-words">
+                  {note.details}
+                </p>
+              </div>
+              <button onClick={() => {
+                deleteNote(index)
+              }} className='w-full cursor-pointer active:scale-95 bg-red-500 py-1 text-xs rounded font-bold text-white'>Delete</button>
           </div>
-
-           <div className="flex flex-col p-10 gap-4 border border-white rounded">
-            <h2 className='text-xl font-bold'>Note Title</h2>
-            <p className='text-white'>Note details go here. This is a sample note.</p>
-          </div>
+          ))}
 
         </div> 
       </div>

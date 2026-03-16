@@ -14,6 +14,8 @@ const App = () => {
   localStorage.setItem('user', JSON.stringify(users));
   const user = JSON.parse(localStorage.getItem('user'));
   console.log(user); // Output: { name: 'John Doe', age: 30, city: 'New York' }
+  localStorage.removeItem('name');
+  localStorage.clear();
   return (
     <div>
       
